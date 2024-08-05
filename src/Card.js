@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Card.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import python from "./Image/python-card.png";
 import lahtp from "./Image/Lahtp-card.png";
 import Bug from "./Image/Bug-card.png";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const CourseCard = ({ imgSrc, title, text, link }) => {
   const cardStyle = {
@@ -48,7 +46,7 @@ const CourseCard = ({ imgSrc, title, text, link }) => {
   const cardTextStyle = {
     fontSize: "1rem",
     margin: "0.5rem 0",
-    top: "60px", // Adjust based on image height
+    top: "30px", // Adjust based on image height
     left: "2%",
     color: "#6c757d",
   };

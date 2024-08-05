@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Nav } from "react-bootstrap";
-import "./User.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import logo_1 from "./Image/Logo-white.png";
 import head_2 from "./Image/head-2.png";
@@ -159,7 +158,7 @@ const CourseFeedback = () => {
                   {feedback.profession}
                 </p>
                 <hr style={{ width: "100%" }} className="line" />
-                <p className="content">{feedback.feedback}</p>
+                <p className="content ">{feedback.feedback}</p>
               </div>
             </div>
           </div>

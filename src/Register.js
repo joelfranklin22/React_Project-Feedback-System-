@@ -115,9 +115,16 @@ const RegistrationForm = () => {
       </div>
       <div
         className="form-container"
-        style={{ maxHeight: "600px", overflowY: "auto", padding: "1rem" }}
+        style={{
+          maxHeight: "600px",
+          overflowY: "auto",
+          padding: "1rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
       >
-        <Form onSubmit={handleSubmit} className="p-4 border rounded">
+        <Form onSubmit={handleSubmit} className="p-4 border rounded mb-4">
           {showSuccess && (
             <Alert
               variant="success"
@@ -185,6 +192,7 @@ const RegistrationForm = () => {
               <option value="python-cli">
                 Python CLI Application on Linux
               </option>
+
               {/* Add more courses as needed */}
             </Form.Control>
             <Form.Control.Feedback type="invalid">
@@ -192,14 +200,14 @@ const RegistrationForm = () => {
             </Form.Control.Feedback>
           </Form.Group>
         </Form>
-      </div>
-      <div className="form-buttons d-flex justify-content-between mt-3">
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
-          Register
-        </Button>
-        <Button variant="secondary" type="button" onClick={handleReset}>
-          Reset
-        </Button>
+        <div className="form-buttons d-flex justify-content-between">
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
+            Register
+          </Button>
+          <Button variant="secondary" type="button" onClick={handleReset}>
+            Reset
+          </Button>
+        </div>
       </div>
     </Container>
   );
