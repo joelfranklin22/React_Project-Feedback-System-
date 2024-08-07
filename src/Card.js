@@ -1,3 +1,4 @@
+// Card.js
 import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,20 +14,20 @@ const CourseCard = ({ imgSrc, title, text, link }) => {
     overflow: "hidden",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     transition: "transform 0.2s",
-    height: "450px", // Adjust height as needed
+    height: "450px",
   };
 
   const cardImageStyle = {
     width: "100%",
-    maxWidth: "300px", // Ensures the image does not exceed 300px
-    height: "190px", // Adjust height as needed
+    maxWidth: "300px",
+    height: "190px",
     margin: "10px auto",
     display: "block",
   };
 
   const cardBodyStyle = {
     position: "absolute",
-    top: "190px", // Adjust based on image height
+    top: "190px",
     left: "50%",
     transform: "translateX(-50%)",
     textAlign: "center",
@@ -46,7 +47,7 @@ const CourseCard = ({ imgSrc, title, text, link }) => {
   const cardTextStyle = {
     fontSize: "1rem",
     margin: "0.5rem 0",
-    top: "30px", // Adjust based on image height
+    top: "30px",
     left: "2%",
     color: "#6c757d",
   };
@@ -86,7 +87,7 @@ const CourseCard = ({ imgSrc, title, text, link }) => {
   );
 };
 
-function Card() {
+const Card = () => {
   const courses = [
     {
       imgSrc: python,
@@ -125,6 +126,6 @@ function Card() {
       </div>
     </div>
   );
-}
+};
 
 export default Card;

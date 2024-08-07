@@ -1,15 +1,15 @@
+// Header.js
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "./Image/Logo-white.png";
-import Python_1 from "./Image/PythonCvr.webp";
 import timerIcon from "./Image/timer.svg";
 import currencyIcon from "./Image/currency.svg";
 import mediaIcon from "./Image/media.svg";
 import icon_py from "./Image/icon-py.png";
 import cliIcon from "./Image/cli.png";
-import RegistrationForm from "./Register"; // Import RegistrationForm component
-
+import RegistrationForm from "./Register";
+import HeaderComponent from "./Header_Course";
+import Python_1 from "./Image/PythonCvr.webp";
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -18,11 +18,13 @@ const Header = () => {
 
   return (
     <>
+      <HeaderComponent showLogin={false} />
       <style>
         {`
           .header-container {
             position: relative;
             z-index: 1;
+            background-color: #1e1e1e;
           }
           .main-container {
             position: relative;
@@ -127,7 +129,9 @@ const Header = () => {
             color: inherit;
           }
           a:hover {
-            text-decoration: underline; /* Underline anchor tags on hover */
+            text-decoration: underline; 
+          text-decoration-color: #ffcc00; 
+          transsition: text-decoration-color 0.3s ease;
           }
           .course-details-1, .course-details-2 {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -138,48 +142,11 @@ const Header = () => {
           }
         `}
       </style>
-
-      <header className="header-container">
-        <div className="nav bg-dark text-white p-3">
-          <div className="logo">
-            <img src={logo} alt="Logo" width="60" height="50" />
-            <span className="company ml-2">Fluid Fusion</span>
-          </div>
-          <ul className="right d-flex align-items-center list-unstyled m-0">
-            <li className="feedback mx-2">
-              <a href="user_Homepage.html" className="text-white">
-                Home
-              </a>
-            </li>
-            <li className="register mx-2">
-              <a href="Register.html" className="text-white">
-                About
-              </a>
-            </li>
-            <li className="contact mx-2">
-              <a href="#call-contact" className="text-white">
-                Course
-              </a>
-            </li>
-            <li className="contact mx-2">
-              <a href="#call-contact" className="text-white">
-                Contact
-              </a>
-            </li>
-            <li className="home mx-2">
-              <a href="user_Homepage.html" className="text-white">
-                Register
-              </a>
-            </li>
-          </ul>
+      <div className="header-content">
+        <div className="back-img">
+          <img src={Python_1} alt="Background" className="img-fluid" />
         </div>
-        <div className="header-content">
-          <div className="back-img">
-            <img src={Python_1} alt="Background" className="img-fluid" />
-          </div>
-        </div>
-      </header>
-
+      </div>
       <main className="main-container">
         <div className="registration text-white p-4 rounded">
           <h2 className="topic">PYTHON CLI APPLICATION ON LINUX</h2>
@@ -224,7 +191,6 @@ const Header = () => {
           </Button>
         </div>
       </main>
-
       <section className="course-need p-4">
         <h2 className="text-white h2">
           What Are The Topics Covered By This Course?
@@ -252,7 +218,6 @@ const Header = () => {
           </li>
         </ul>
       </section>
-
       <section className="things py-4 skills">
         <h2 className="text-white text-center mb-4 head">
           What are the Things you Master from Course?
@@ -280,7 +245,6 @@ const Header = () => {
           </div>
         </div>
       </section>
-
       <Modal show={showModal} onHide={handleClose} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title>Register</Modal.Title>

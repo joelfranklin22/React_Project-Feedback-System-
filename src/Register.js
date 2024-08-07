@@ -1,16 +1,46 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registerUser } from "./actions";
 import { Form, Button, Alert, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [course, setCourse] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
   const [errors, setErrors] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  // Validation functions
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = {
+      username: validateUsername(username),
+      email: validateEmail(email),
+      password: validatePassword(password),
+    };
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some((error) => error !== "");
+    if (!hasErrors) {
+      const user = { username, email };
+
+      dispatch(registerUser(user));
+      setShowSuccess(true);
+
+      setTimeout(() => {
+        navigate("/module");
+        setShowSuccess(false);
+      }, 1000);
+
+      handleReset();
+    }
+  };
+
   const validateUsername = (value) => {
     const usernameRegex = /^[a-zA-Z0-9]{3,20}$/;
     if (!value.trim()) return "Username is required";
@@ -34,12 +64,6 @@ const RegistrationForm = () => {
     return "";
   };
 
-  const validateCourse = (value) => {
-    if (!value.trim()) return "Course is required";
-    return "";
-  };
-
-  // Handle input change and validate on-the-fly
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
@@ -64,55 +88,20 @@ const RegistrationForm = () => {
           password: validatePassword(value),
         }));
         break;
-      case "course":
-        setCourse(value);
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          course: validateCourse(value),
-        }));
-        break;
       default:
         break;
     }
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = {
-      username: validateUsername(username),
-      email: validateEmail(email),
-      password: validatePassword(password),
-      course: validateCourse(course),
-    };
-
-    setErrors(newErrors);
-
-    const hasErrors = Object.values(newErrors).some((error) => error !== "");
-    if (!hasErrors) {
-      setShowSuccess(true);
-      setUsername("");
-      setEmail("");
-      setPassword("");
-      setCourse("");
-      setErrors({});
-    }
-  };
-
-  // Handle form reset
   const handleReset = () => {
     setUsername("");
     setEmail("");
     setPassword("");
-    setCourse("");
     setErrors({});
   };
 
   return (
     <Container>
-      <div className="form-header text-center my-4">
-        <h2>Register for the Course</h2>
-      </div>
       <div
         className="form-container"
         style={{
@@ -124,7 +113,7 @@ const RegistrationForm = () => {
           justifyContent: "space-between",
         }}
       >
-        <Form onSubmit={handleSubmit} className="p-4 border rounded mb-4">
+        <Form onSubmit={handleSubmit}>
           {showSuccess && (
             <Alert
               variant="success"
@@ -139,7 +128,6 @@ const RegistrationForm = () => {
             <Form.Control
               type="text"
               name="username"
-              placeholder="Enter username"
               value={username}
               onChange={handleInputChange}
               isInvalid={!!errors.username}
@@ -154,7 +142,6 @@ const RegistrationForm = () => {
             <Form.Control
               type="email"
               name="email"
-              placeholder="Enter email"
               value={email}
               onChange={handleInputChange}
               isInvalid={!!errors.email}
@@ -169,7 +156,6 @@ const RegistrationForm = () => {
             <Form.Control
               type="password"
               name="password"
-              placeholder="Enter password"
               value={password}
               onChange={handleInputChange}
               isInvalid={!!errors.password}
@@ -179,35 +165,13 @@ const RegistrationForm = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group controlId="formCourse">
-            <Form.Label>Course</Form.Label>
-            <Form.Control
-              as="select"
-              name="course"
-              value={course}
-              onChange={handleInputChange}
-              isInvalid={!!errors.course}
-            >
-              <option value="">Select course</option>
-              <option value="python-cli">
-                Python CLI Application on Linux
-              </option>
-
-              {/* Add more courses as needed */}
-            </Form.Control>
-            <Form.Control.Feedback type="invalid">
-              {errors.course}
-            </Form.Control.Feedback>
-          </Form.Group>
+          <div className="mt-3 d-flex justify-content-between">
+            <Button type="submit">Register</Button>
+            <Button variant="secondary" onClick={handleReset}>
+              Reset
+            </Button>
+          </div>
         </Form>
-        <div className="form-buttons d-flex justify-content-between">
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Register
-          </Button>
-          <Button variant="secondary" type="button" onClick={handleReset}>
-            Reset
-          </Button>
-        </div>
       </div>
     </Container>
   );

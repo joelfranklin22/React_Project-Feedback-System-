@@ -8,45 +8,15 @@ import Person1 from "./Image/Person-1.png";
 import Person2 from "./Image/Person-2.png";
 import Person3 from "./Image/Person-3.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import HeaderComponent from "./Header_Course"; 
 
 const Header = () => {
   return (
     <div className="app">
+    <HeaderComponent showLogin={true} />
       <header>
         <div className="background-image">
           <Container fluid className="position-relative">
-            <Row className="align-items-center py-3">
-              <Col xs="auto">
-                <img src={logo_1} alt="Logo" className="logo" />
-              </Col>
-              <Col xs="auto">
-                <span className="text-white font-weight-bold">
-                  Fluid Fusion
-                </span>
-              </Col>
-              <Col className="ml-auto nav-links">
-                <Nav className="justify-content-end">
-                  <Nav.Link href="#" className="mx-2 text-white">
-                    Home
-                  </Nav.Link>
-                  <Nav.Link href="#about" className="mx-2 text-white">
-                    About
-                  </Nav.Link>
-                  <Nav.Link href="#contact" className="mx-2 text-white">
-                    Contact
-                  </Nav.Link>
-                  <Nav.Link
-                    href="User_Register.html"
-                    className="mx-2 text-white"
-                  >
-                    Register
-                  </Nav.Link>
-                  <Nav.Link href="#course" className="mx-2 text-white">
-                    Course
-                  </Nav.Link>
-                </Nav>
-              </Col>
-            </Row>
             <div className="overlay-content text-center">
               <div className="left-image mt-5">
                 <img src={head_2} alt="Left Side Image" />
@@ -169,7 +139,7 @@ const CourseFeedback = () => {
 };
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{ backgroundColor: "#1e1e1e" }}>
       <Container>
         <Row>
           <Col md={3} className="footer-section">
@@ -238,7 +208,7 @@ const Footer = () => {
           <Col className="foot">
             <p className="left">Copyright &copy; Fluid Fusion Tech.</p>
             <p className="right">
-              Developed & Maintained by Joel <i className="fas fa-tools"></i>
+              Developed & Maintained by Joel <i className="fas fa-tools" ></i>
             </p>
           </Col>
         </Row>

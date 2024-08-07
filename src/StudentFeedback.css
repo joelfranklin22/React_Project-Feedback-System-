@@ -1,0 +1,122 @@
+/* StudentFeedback.css */
+
+.feedback-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .feedback-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .question-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+  .question-label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon-label {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  .icon {
+    font-size: 40px;
+    color: grey;
+    transition: color 0.3s;
+  }
+  
+  .icon-worst {
+    color: red;
+  }
+  
+  .icon-better {
+    color: orange;
+  }
+  
+  .icon-best {
+    color: green;
+  }
+  
+  .submit-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
+  .modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+  }
+  
+  .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  .modal-button-close {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .modal-button-close:hover {
+    background-color: #0056b3;
+  }
+  
+  .modal-button-error {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .modal-button-error:hover {
+    background-color: #c82333;
+  }
+  
